@@ -1,0 +1,310 @@
+.chat-message {
+  display: flex;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+  max-width: 100%;
+}
+
+.chat-message.user {
+  flex-direction: row-reverse;
+}
+
+.message-avatar {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.user-avatar {
+  background-color: var(--nxp-blue);
+  color: white;
+}
+
+.assistant-avatar {
+  background-color: var(--nxp-light-blue);
+  color: var(--nxp-blue);
+}
+
+.message-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.chat-message.user .message-content {
+  text-align: right;
+}
+
+.message-text {
+  background-color: #f8f9fa;
+  padding: var(--spacing-md);
+  border-radius: var(--border-radius-lg);
+  border: 1px solid #e9ecef;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  line-height: 1.5;
+}
+
+.chat-message.user .message-text {
+  background-color: var(--nxp-blue);
+  color: white;
+  border-color: var(--nxp-blue);
+}
+
+.message-timestamp {
+  font-size: 12px;
+  color: var(--nxp-text-secondary);
+  margin-top: var(--spacing-xs);
+}
+
+.cursor {
+  animation: blink 1s infinite;
+  color: var(--nxp-blue);
+  font-weight: bold;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+/* Markdown Styling */
+.markdown-h1 {
+  font-size: 1.8em;
+  font-weight: 700;
+  color: var(--nxp-blue);
+  margin: 0 0 var(--spacing-md) 0;
+  padding-bottom: var(--spacing-xs);
+  border-bottom: 2px solid var(--nxp-light-blue);
+}
+
+.markdown-h2 {
+  font-size: 1.5em;
+  font-weight: 600;
+  color: var(--nxp-blue);
+  margin: var(--spacing-lg) 0 var(--spacing-md) 0;
+}
+
+.markdown-h3 {
+  font-size: 1.3em;
+  font-weight: 600;
+  color: var(--nxp-dark-blue);
+  margin: var(--spacing-md) 0 var(--spacing-sm) 0;
+}
+
+.markdown-h4 {
+  font-size: 1.1em;
+  font-weight: 600;
+  color: var(--nxp-dark-blue);
+  margin: var(--spacing-md) 0 var(--spacing-sm) 0;
+}
+
+.markdown-p {
+  margin: 0 0 var(--spacing-md) 0;
+  line-height: 1.6;
+}
+
+.markdown-ul, .markdown-ol {
+  margin: 0 0 var(--spacing-md) 0;
+  padding-left: var(--spacing-lg);
+}
+
+.markdown-li {
+  margin-bottom: var(--spacing-xs);
+  line-height: 1.5;
+}
+
+.markdown-strong {
+  font-weight: 700;
+  color: var(--nxp-dark-blue);
+}
+
+.markdown-em {
+  font-style: italic;
+  color: var(--nxp-text-primary);
+}
+
+.markdown-code-inline {
+  background-color: #f1f3f4;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-size: 0.9em;
+  color: #d73a49;
+}
+
+.chat-message.user .markdown-code-inline {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+.markdown-pre {
+  background-color: #f6f8fa;
+  border: 1px solid #e1e4e8;
+  border-radius: var(--border-radius-md);
+  padding: var(--spacing-md);
+  overflow-x: auto;
+  margin: var(--spacing-md) 0;
+}
+
+.markdown-code-block {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-size: 0.9em;
+  line-height: 1.4;
+}
+
+.chat-message.user .markdown-pre {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.chat-message.user .markdown-code-block {
+  color: #fff;
+}
+
+.markdown-blockquote {
+  border-left: 4px solid var(--nxp-light-blue);
+  padding-left: var(--spacing-md);
+  margin: var(--spacing-md) 0;
+  font-style: italic;
+  color: var(--nxp-text-secondary);
+}
+
+.chat-message.user .markdown-blockquote {
+  border-left-color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.markdown-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: var(--spacing-md) 0;
+  font-size: 0.9em;
+}
+
+.markdown-th,
+.markdown-td {
+  border: 1px solid #e1e4e8;
+  padding: var(--spacing-sm);
+  text-align: left;
+}
+
+.markdown-th {
+  background-color: #f6f8fa;
+  font-weight: 600;
+  color: var(--nxp-dark-blue);
+}
+
+.chat-message.user .markdown-th {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+.chat-message.user .markdown-td {
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .chat-message {
+    gap: var(--spacing-sm);
+  }
+  
+  .message-avatar {
+    width: 32px;
+    height: 32px;
+    font-size: 12px;
+  }
+  
+  .message-text {
+    padding: var(--spacing-sm);
+  }
+  
+  .markdown-h1 {
+    font-size: 1.5em;
+  }
+  
+  .markdown-h2 {
+    font-size: 1.3em;
+  }
+  
+  .markdown-table {
+    font-size: 0.8em;
+  }
+  
+  .markdown-th,
+  .markdown-td {
+    padding: var(--spacing-xs);
+  }
+}
+
+/* Dark theme support for user messages */
+.chat-message.user .markdown-h1,
+.chat-message.user .markdown-h2,
+.chat-message.user .markdown-h3,
+.chat-message.user .markdown-h4 {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.chat-message.user .markdown-strong {
+  color: #fff;
+}
+
+.chat-message.user .markdown-ul,
+.chat-message.user .markdown-ol,
+.chat-message.user .markdown-li,
+.chat-message.user .markdown-p {
+  color: rgba(255, 255, 255, 0.95);
+}
+
+/* Add these styles to your existing ChatMessage.css */
+
+.chat-message.reasoning {
+  opacity: 0.8;
+}
+
+.chat-message.transient {
+  animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 0.8; transform: translateY(0); }
+}
+
+.reasoning-avatar {
+  background-color: #ffa500;
+  color: white;
+  font-size: 12px;
+}
+
+.reasoning-content {
+  font-style: italic;
+}
+
+.reasoning-label {
+  font-size: 12px;
+  color: #666;
+  margin-bottom: var(--spacing-xs);
+  font-weight: 600;
+}
+
+.reasoning-text {
+  color: #555;
+  font-size: 14px;
+}
+
+.chat-message.reasoning .message-text {
+  background-color: #fff8e1;
+  border-color: #ffa500;
+  border-left: 4px solid #ffa500;
+}
+
+/* Rest of your existing CSS styles... */
