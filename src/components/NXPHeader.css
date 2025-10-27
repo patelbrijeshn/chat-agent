@@ -1,0 +1,200 @@
+.nxp-header {
+  background-color: #fff;
+  border-bottom: 1px solid #e5e5e5;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  height: 64px;
+}
+
+.nxp-header-container {
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  padding: 0 24px;
+}
+
+.nxp-header-left {
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  height: 100%;
+}
+
+.nxp-logo {
+  display: flex;
+  align-items: center;
+  height: 32px;
+}
+
+.nxp-logo svg {
+  height: 32px;
+  width: auto;
+}
+
+/* Ensure the NXP logo colors are preserved */
+.nxp-logo .nxpsvglogoN {
+  fill: #FCA600 !important;
+}
+
+.nxp-logo .nxpsvglogoP {
+  fill: #69CA00 !important;
+}
+
+.nxp-logo .nxpsvglogoX {
+  fill: #0EAFE0 !important;
+}
+
+.nxp-nav {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  height: 100%;
+}
+
+.nxp-nav a {
+  color: #333;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 16px;
+  transition: color 0.2s ease;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  line-height: 1;
+  padding: 0;
+  margin: 0;
+}
+
+.nxp-nav a:hover {
+  color: #0070f3;
+}
+
+/* Special styling for the store button */
+.nxp-nav a.store {
+  background-color: #ff7400;
+  color: #fff !important;
+  text-decoration: none;
+  box-shadow: none;
+  line-height: normal;
+  padding: 8px 12px;
+  border-radius: 25px;
+  font-size: 12px;
+  font-weight: 600;
+  height: auto; /* Override the full height */
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.2s ease;
+}
+
+.nxp-nav a.store:hover {
+  background-color: #e6690a;
+  color: #fff !important;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(255, 116, 0, 0.3);
+}
+
+.nxp-header-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  height: 100%;
+}
+
+.nxp-search-toggle,
+.nxp-menu-toggle {
+  background: none;
+  border: none;
+  padding: 8px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+  color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nxp-search-toggle:hover,
+.nxp-menu-toggle:hover {
+  background-color: #f5f5f5;
+}
+
+.nxp-new-chat-btn {
+  background-color: #0070f3;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.nxp-new-chat-btn:hover {
+  background-color: #0051cc;
+}
+
+.nxp-menu-toggle {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 8px 6px;
+  align-items: center;
+  justify-content: center;
+}
+
+.nxp-menu-toggle span {
+  width: 20px;
+  height: 2px;
+  background-color: #333;
+  transition: all 0.2s ease;
+  border-radius: 1px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .nxp-nav {
+    display: none;
+  }
+  
+  .nxp-header-container {
+    padding: 0 16px;
+  }
+  
+  .nxp-header-left {
+    gap: 24px;
+  }
+  
+  .nxp-logo svg {
+    height: 28px;
+  }
+  
+  .nxp-new-chat-btn {
+    padding: 6px 12px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .nxp-header-right {
+    gap: 12px;
+  }
+  
+  .nxp-search-toggle {
+    padding: 6px;
+  }
+  
+  .nxp-new-chat-btn {
+    display: none; /* Hide on very small screens to save space */
+  }
+}

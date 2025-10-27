@@ -1,71 +1,100 @@
 .chat-message {
-  display: flex;
-  gap: var(--spacing-md);
-  margin-bottom: var(--spacing-lg);
-  max-width: 100%;
+  width: 100%;
+  margin-bottom: 0;
+  padding: 0;
 }
 
-.chat-message.user {
-  flex-direction: row-reverse;
-}
-
+/* Remove all avatar and bubble styling for a clean, full-width layout */
 .message-avatar {
-  flex-shrink: 0;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 600;
-  font-size: 14px;
-}
-
-.user-avatar {
-  background-color: var(--nxp-blue);
-  color: white;
-}
-
-.assistant-avatar {
-  background-color: var(--nxp-light-blue);
-  color: var(--nxp-blue);
+  display: none;
 }
 
 .message-content {
-  flex: 1;
-  min-width: 0;
-}
-
-.chat-message.user .message-content {
-  text-align: right;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
 }
 
 .message-text {
-  background-color: #f8f9fa;
-  padding: var(--spacing-md);
-  border-radius: var(--border-radius-lg);
-  border: 1px solid #e9ecef;
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 20px 0;
+  border-radius: 0;
   word-wrap: break-word;
   overflow-wrap: break-word;
+  /* 
+  line-height: 1.6;
+  */
+  box-shadow: none;
+  text-align: left;
+  color: #333;
+  font-size: 16px;
+}
+
+/* Reasoning message styling */
+.chat-message.reasoning {
+  opacity: 1;
+  background-color: #f8f9fa;
+  border-left: 4px solid #ffa500;
+  margin-bottom: 16px;
+}
+
+.chat-message.reasoning .message-content {
+  padding: 0;
+}
+
+.chat-message.reasoning .message-text {
+  padding: 16px 24px;
+  background: none;
+  border: none;
+  margin: 0;
+}
+
+.chat-message.transient {
+  animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.reasoning-content {
+  font-style: italic;
+}
+
+.reasoning-label {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 8px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.reasoning-label::before {
+  content: '🤔';
+  font-size: 16px;
+}
+
+.reasoning-text {
+  color: #555;
+  font-size: 18px;
   line-height: 1.5;
 }
 
-.chat-message.user .message-text {
-  background-color: var(--nxp-blue);
-  color: white;
-  border-color: var(--nxp-blue);
-}
-
 .message-timestamp {
-  font-size: 12px;
-  color: var(--nxp-text-secondary);
-  margin-top: var(--spacing-xs);
+  display: none; /* Hide timestamps for cleaner look */
 }
 
 .cursor {
   animation: blink 1s infinite;
-  color: var(--nxp-blue);
+  color: #0070f3;
   font-weight: bold;
+  margin-left: 2px;
 }
 
 @keyframes blink {
@@ -73,60 +102,73 @@
   51%, 100% { opacity: 0; }
 }
 
-/* Markdown Styling */
+/* Assistant message styling - clean and minimal */
+.chat-message.assistant .message-text {
+  padding: 24px 0;
+  border-bottom: 1px solid #f0f0f0;
+  margin-bottom: 16px;
+}
+
+.chat-message.assistant:last-child .message-text {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+/* Markdown styling for full-width content */
 .markdown-h1 {
   font-size: 1.8em;
   font-weight: 700;
-  color: var(--nxp-blue);
-  margin: 0 0 var(--spacing-md) 0;
-  padding-bottom: var(--spacing-xs);
-  border-bottom: 2px solid var(--nxp-light-blue);
+  color: #0070f3;
+  margin: 0 0 16px 0;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #e3f2fd;
 }
 
 .markdown-h2 {
   font-size: 1.5em;
   font-weight: 600;
-  color: var(--nxp-blue);
-  margin: var(--spacing-lg) 0 var(--spacing-md) 0;
+  color: #0070f3;
+  margin: 5px 0 5px 0;
 }
 
 .markdown-h3 {
   font-size: 1.3em;
   font-weight: 600;
-  color: var(--nxp-dark-blue);
-  margin: var(--spacing-md) 0 var(--spacing-sm) 0;
+  color: #333;
+  margin: 16px 0 12px 0;
 }
 
 .markdown-h4 {
   font-size: 1.1em;
   font-weight: 600;
-  color: var(--nxp-dark-blue);
-  margin: var(--spacing-md) 0 var(--spacing-sm) 0;
+  color: #333;
+  margin: 16px 0 12px 0;
 }
 
 .markdown-p {
-  margin: 0 0 var(--spacing-md) 0;
+  margin: 0 0 5px 0;
   line-height: 1.6;
 }
 
 .markdown-ul, .markdown-ol {
-  margin: 0 0 var(--spacing-md) 0;
-  padding-left: var(--spacing-lg);
+  margin: 0 0 16px 0;
+  padding-left: 24px;
 }
 
 .markdown-li {
-  margin-bottom: var(--spacing-xs);
+  /*
+  margin-bottom: 8px;
   line-height: 1.5;
+  */
 }
 
 .markdown-strong {
   font-weight: 700;
-  color: var(--nxp-dark-blue);
+  color: #333;
 }
 
 .markdown-em {
   font-style: italic;
-  color: var(--nxp-text-primary);
 }
 
 .markdown-code-inline {
@@ -138,18 +180,14 @@
   color: #d73a49;
 }
 
-.chat-message.user .markdown-code-inline {
-  background-color: rgba(255, 255, 255, 0.2);
-  color: #fff;
-}
-
 .markdown-pre {
   background-color: #f6f8fa;
   border: 1px solid #e1e4e8;
-  border-radius: var(--border-radius-md);
-  padding: var(--spacing-md);
+  border-radius: 8px;
+  padding: 16px;
   overflow-x: auto;
-  margin: var(--spacing-md) 0;
+  margin: 16px 0;
+  max-width: 100%;
 }
 
 .markdown-code-block {
@@ -158,72 +196,54 @@
   line-height: 1.4;
 }
 
-.chat-message.user .markdown-pre {
-  background-color: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.2);
-}
-
-.chat-message.user .markdown-code-block {
-  color: #fff;
-}
-
 .markdown-blockquote {
-  border-left: 4px solid var(--nxp-light-blue);
-  padding-left: var(--spacing-md);
-  margin: var(--spacing-md) 0;
+  border-left: 4px solid #e3f2fd;
+  padding-left: 16px;
+  margin: 16px 0;
   font-style: italic;
-  color: var(--nxp-text-secondary);
-}
-
-.chat-message.user .markdown-blockquote {
-  border-left-color: rgba(255, 255, 255, 0.5);
-  color: rgba(255, 255, 255, 0.9);
+  color: #666;
 }
 
 .markdown-table {
   width: 100%;
   border-collapse: collapse;
-  margin: var(--spacing-md) 0;
+  margin: 16px 0;
   font-size: 0.9em;
+  max-width: 100%;
+  overflow-x: auto;
+  display: block;
+  white-space: nowrap;
 }
 
 .markdown-th,
 .markdown-td {
   border: 1px solid #e1e4e8;
-  padding: var(--spacing-sm);
+  padding: 12px;
   text-align: left;
 }
 
 .markdown-th {
   background-color: #f6f8fa;
   font-weight: 600;
-  color: var(--nxp-dark-blue);
+  color: #333;
 }
 
-.chat-message.user .markdown-th {
-  background-color: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.2);
-  color: #fff;
-}
-
-.chat-message.user .markdown-td {
-  border-color: rgba(255, 255, 255, 0.2);
-}
-
-/* Responsive adjustments */
 @media (max-width: 768px) {
-  .chat-message {
-    gap: var(--spacing-sm);
-  }
-  
-  .message-avatar {
-    width: 32px;
-    height: 32px;
-    font-size: 12px;
+  .message-content {
+    padding: 0 16px;
   }
   
   .message-text {
-    padding: var(--spacing-sm);
+    padding: 16px 0;
+    font-size: 15px;
+  }
+  
+  .chat-message.assistant .message-text {
+    padding: 20px 0;
+  }
+  
+  .chat-message.reasoning .message-text {
+    padding: 12px 16px;
   }
   
   .markdown-h1 {
@@ -238,73 +258,18 @@
     font-size: 0.8em;
   }
   
-  .markdown-th,
-  .markdown-td {
-    padding: var(--spacing-xs);
+  .markdown-pre {
+    padding: 12px;
+    font-size: 0.8em;
   }
 }
 
-/* Dark theme support for user messages */
-.chat-message.user .markdown-h1,
-.chat-message.user .markdown-h2,
-.chat-message.user .markdown-h3,
-.chat-message.user .markdown-h4 {
-  color: #fff;
-  border-color: rgba(255, 255, 255, 0.3);
+/* Ensure tables are responsive */
+@media (max-width: 768px) {
+  .markdown-table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+  }
 }
-
-.chat-message.user .markdown-strong {
-  color: #fff;
-}
-
-.chat-message.user .markdown-ul,
-.chat-message.user .markdown-ol,
-.chat-message.user .markdown-li,
-.chat-message.user .markdown-p {
-  color: rgba(255, 255, 255, 0.95);
-}
-
-/* Add these styles to your existing ChatMessage.css */
-
-.chat-message.reasoning {
-  opacity: 0.8;
-}
-
-.chat-message.transient {
-  animation: fadeIn 0.3s ease-in;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 0.8; transform: translateY(0); }
-}
-
-.reasoning-avatar {
-  background-color: #ffa500;
-  color: white;
-  font-size: 12px;
-}
-
-.reasoning-content {
-  font-style: italic;
-}
-
-.reasoning-label {
-  font-size: 12px;
-  color: #666;
-  margin-bottom: var(--spacing-xs);
-  font-weight: 600;
-}
-
-.reasoning-text {
-  color: #555;
-  font-size: 14px;
-}
-
-.chat-message.reasoning .message-text {
-  background-color: #fff8e1;
-  border-color: #ffa500;
-  border-left: 4px solid #ffa500;
-}
-
-/* Rest of your existing CSS styles... */

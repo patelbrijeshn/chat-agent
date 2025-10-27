@@ -1,10 +1,10 @@
 .chat-app {
   display: flex;
   flex-direction: column;
-  height: 100vh;
-  max-width: 1200px;
+  min-height: 100vh;
+
   margin: 0 auto;
-  background-color: white;
+  background-color: #fafafa;
   box-shadow: var(--shadow-lg);
 }
 
@@ -62,15 +62,36 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  padding-top: 64px; /* Account for fixed header */
+  min-height: calc(100vh - 64px);
 }
 
 .messages-container {
   flex: 1;
   overflow-y: auto;
-  padding: var(--spacing-lg);
   max-width: 800px;
   margin: 0 auto;
+  padding: 0 24px;
+  /* Add bottom padding to account for sticky search bar */
+  padding-bottom: 100px;
   width: 100%;
+}
+
+.conversation-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  padding-bottom: 100px; /* Account for sticky search bar */
+}
+
+.conversation-section {
+  position: relative;
+  width: 100%;
+}
+
+.section-messages {
+  width: 100%;
+  padding: 0;
 }
 
 .welcome-message {
@@ -84,13 +105,76 @@
   margin-bottom: var(--spacing-md);
 }
 
+.bottom-spacer {
+  height: 20px; /* Extra space before sticky search bar */
+}
+
 .error-message {
   background-color: #fee;
   border: 1px solid #fcc;
   color: #c33;
-  padding: var(--spacing-md);
-  border-radius: var(--border-radius-md);
-  margin-bottom: var(--spacing-lg);
+  padding: 16px;
+  border-radius: 8px;
+  margin: 16px 24px;
+  text-align: left;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Global styles */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #fafafa;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* Section dividers */
+.conversation-section:not(:first-child) {
+  position: relative;
+}
+
+.conversation-section:not(:first-child)::before {
+  content: '';
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  right: 24px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #e5e5e5 20%, #e5e5e5 80%, transparent);
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 @media (max-width: 768px) {
@@ -109,6 +193,19 @@
   }
   
   .messages-container {
-    padding: var(--spacing-md);
+    padding: 0 16px 80px 16px;
+  }
+  
+  .section-messages {
+    padding: 0 16px;
+  }
+  
+  .error-message {
+    margin: 16px 16px;
+  }
+  
+  .conversation-section:not(:first-child)::before {
+    left: 16px;
+    right: 16px;
   }
 }

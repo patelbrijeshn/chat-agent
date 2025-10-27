@@ -32,7 +32,7 @@ const ChatMessage: React.FC<ChatMessageProps> = ({ message }) => {
         <div className="message-text">
           {message.role === 'reasoning' ? (
             <div className="reasoning-content">
-              <div className="reasoning-label">🤔 Thinking...</div>
+              <div className="reasoning-label">Thinking...</div>
               <div className="reasoning-text">{message.content}</div>
             </div>
           ) : message.role === 'assistant' ? (
