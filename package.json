@@ -1,5 +1,6 @@
 {
-  "name": "elastic-chat-app",
+  "name": "nxp-search-agent",
+  "homepage": "/nxp-search-agent",
   "version": "0.1.0",
   "private": true,
   "proxy": "https://search-demo2-b9985c.kb.us-west-2.aws.elastic.cloud",
@@ -14,6 +15,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-markdown": "^10.1.0",
+    "react-router-dom": "^7.9.4",
     "react-scripts": "5.0.1",
     "remark-gfm": "^4.0.1",
     "typescript": "^4.7.4",
